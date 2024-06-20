@@ -6,7 +6,7 @@ const Join = () => {
     const [dto, setDto] = useState({ name: '', username: '', pwd: '', email: '', role: '' });
     const { name, username, pwd, email, role } = dto;
     const navigate = useNavigate();
-    
+
     const onChange = (e) => {
         const { name, value } = e.target;
         setDto({
@@ -17,12 +17,16 @@ const Join = () => {
 
     const join = () => {
         console.log({ name: name, username: username, pwd: pwd, email: email });
-        axios.post('http://localhost:8687/member/join', { name: name, username: username, pwd: pwd, email: email }, {})
+        axios.post('http://localhost:8687/member/join', { name: name, username: username, pwd: pwd, email: email }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
             .then(function (res) {
                 console.log(dto);
                 if (res.status === 200) {
-                    alert(res.data.dto.name+"님 가입이 완료됐습니다.");
-                    navigate("/board/list");
+                    alert(res.data.dto.name + "님 가입이 완료됐습니다.");
+                    navigate('/');
                 } else {
                     alert('error:' + res.status);
                 }

@@ -17,7 +17,7 @@ class Routers extends Component {
                 <Route path="/member/detail" element={<MemberDetail />} />
                 <Route path="/board/list" element={<BoardList />} />
                 <Route path="/board/add" element={<BoardAdd />} />
-                <Route path="/board/edit" element={<BoardEdit />} />
+                <Route path="/board/edit/:id" element={<BoardEdit />} />
             </Routes>
         )
     }
